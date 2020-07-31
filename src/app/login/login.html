@@ -1,0 +1,17 @@
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-row><ion-col size="4"></ion-col>Sign up using<ion-col size="4"></ion-col></ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button expand="block" color="light">
+          <ion-icon name="call-outline"></ion-icon>&nbsp;Phone
+        </ion-button>
+      </ion-col>
+      <ion-col size="6">
+        <ion-button expand="block" color="light" (click)="doGoogleLogin()">
+        <ion-icon name="logo-google"></ion-icon>&nbsp;Google
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
