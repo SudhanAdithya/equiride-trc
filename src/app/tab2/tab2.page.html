@@ -1,18 +1,17 @@
-<ion-header [translucent]="true">
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>
-      Booking
-    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Booking</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <app-explore-container name=""></app-explore-container>
 
   <ion-card (click)="navigate1()">
@@ -20,7 +19,7 @@
     <ion-card-header>
       <ion-card-title>Horse Slot Booking</ion-card-title>
     </ion-card-header>
-  
+
     <ion-card-content>
       Keep close to Nature's heart... and break clear away, once in awhile,
       and climb a mountain or spend a week in the woods. Wash your spirit clean.
@@ -32,24 +31,23 @@
     <ion-card-header>
       <ion-card-title>Memorable Cuisine</ion-card-title>
     </ion-card-header>
-  
+
     <ion-card-content>
-       We promise you a culinary experience that will be a celebration of a lifetime.    
+       We promise you a culinary experience that will be a celebration of a lifetime.
       </ion-card-content>
   </ion-card>
-  
+
   <ion-card (click)="navigate3()">
     <img src="../../assets/samantha-gades-fIHozNWfcvs-unsplash.jpg" />
     <ion-card-header>
       <ion-card-title>Party </ion-card-title>
     </ion-card-header>
-  
+
     <ion-card-content>
       Start planning your events with us.
       Explore Opportunities to Celebrate
     </ion-card-content>
   </ion-card>
-
 </ion-content>
 
 
