@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-tab2',
@@ -7,6 +11,18 @@ import { Component } from '@angular/core';
 })
 export class Tab2Page {
 
-  constructor() {}
+  constructor(private router: Router) {}
 
+  navigate1() {
+    this.router.navigate(['/home/tab2/slot'])
+  }
+
+  navigate2() {
+    this.router.navigate(['/home/tab2/restaurant'])
+  }
+
+  navigate3() {
+    this.router.navigate(['/home/tab2/event'])
+  }
+  
 }
