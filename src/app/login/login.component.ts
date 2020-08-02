@@ -4,7 +4,7 @@ import {AuthService} from '../core/auth.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {LoadingController, Platform} from '@ionic/angular';
 import {AngularFireAuth} from '@angular/fire/auth';
-//import {GooglePlus} from '@ionic-native/google-plus/ngx';
+import {GooglePlus} from '@ionic-native/google-plus/ngx';
 import * as firebase from 'firebase';
 
 @Component({
@@ -14,17 +14,68 @@ import * as firebase from 'firebase';
 })
 export class LoginComponent implements OnInit {
   loading;
+  slideOpts = {
+    initialSlide: 1,
+    speed: 400
+  };
   constructor(private activatedRoute: ActivatedRoute,
               private authService: AuthService,
               private fireAuth: AngularFireAuth,
               private afs: AngularFirestore,
               private router: Router,
               private platform: Platform,
-              //private google: GooglePlus,
+              private google: GooglePlus,
               private loadingController: LoadingController) {
   }
 
-  ngOnInit() {}
+
+
+  async ngOnInit() {
+    this.loading = await this.loadingController.create({
+      message: 'Connecting ...'
+    });
+  }
+
+
+  async presentLoading(loading) {
+    await loading.present();
+  }
+
+
+  async login() {
+    let params;
+    if (this.platform.is('android') || this.platform.is('ios')) {
+      params = {
+        webClientId: '432502126830-hf1k89ongmuo1t8d9pjlkfdsloksaeeu.apps.googleusercontent.com',
+        offline: true
+      };
+    }
+    else {
+      params = {};
+    }
+    this.google.login(params)
+      .then((response) => {
+        const { idToken, accessToken } = response;
+        this.onLoginSuccess(idToken, accessToken);
+      }).catch((error) => {
+      console.log(error);
+      alert('error:' + JSON.stringify(error));
+    });
+  }
+  onLoginSuccess(accessToken, accessSecret) {
+    const credential = accessSecret ? firebase.auth.GoogleAuthProvider
+      .credential(accessToken, accessSecret) : firebase.auth.GoogleAuthProvider
+      .credential(accessToken);
+    this.fireAuth.signInWithCredential(credential)
+      .then((response) => {
+        this.router.navigate(['/home/tab1']);
+        this.loading.dismiss();
+      });
+
+  }
+  onLoginError(err) {
+    console.log(err);
+  }
 
   async startLoading() {
     this.loading = await this.loadingController.create({
@@ -32,37 +83,38 @@ export class LoginComponent implements OnInit {
     });
     await this.loading.present();
   }
-
-  async login() {
-    let params;
-    if (this.platform.is('android')) {
-      params = {
-        webClientId: '585702289182-o4l7cdovpl5m7kpjkb86960l3hv4o64p.apps.googleusercontent.com',
-        offline: true
-      };
-    } else {
-      params = {};
-    }
-    // this.google.login(params).then((response) => {
-    //   const {idToken, accessToken} = response;
-    //   this.onLoginSuccess(idToken, accessToken);
-    // }).catch((error) => {
-    //   alert('error:' + JSON.stringify(error));
-    //   this.loading.dismiss();
-    // });
-  }
-
-  onLoginSuccess(accessToken, accessSecret) {
-    const credential = accessSecret ? firebase.auth.GoogleAuthProvider
-      .credential(accessToken, accessSecret) : firebase.auth.GoogleAuthProvider
-      .credential(accessToken);
-    this.fireAuth.signInWithCredential(credential).then((response) => {
-      this.router.navigate(['/home/profile']).then(r => this.loading.dismiss());
-    }, (error) => {
-      this.loading.dismiss();
-      alert('error :' + JSON.stringify(error));
-    });
-  }
+  //
+  // async login() {
+  //   let params;
+  //   if (this.platform.is('android')) {
+  //     params = {
+  //       webClientId: '432502126830-eofcqms71fn8t8lgkbniu0k54q0j09qn.apps.googleusercontent.com',
+  //       offline: true
+  //     };
+  //   } else {
+  //     params = {};
+  //   }
+  //   this.google.login(params).then((response) => {
+  //     const {idToken, accessToken} = response;
+  //     this.onLoginSuccess(idToken, accessToken);
+  //   }).catch((error) => {
+  //     alert('error:' + JSON.stringify(error));
+  //     this.loading.dismiss();
+  //   });
+  // }
+  //
+  // onLoginSuccess(accessToken, accessSecret) {
+  //   const credential = accessSecret ? firebase.auth.GoogleAuthProvider
+  //     .credential(accessToken, accessSecret) : firebase.auth.GoogleAuthProvider
+  //     .credential(accessToken);
+  //   this.fireAuth.signInWithCredential(credential).then((response) => {
+  //     this.router.navigate(['/home/profile']).then(r => this.loading.dismiss());
+  //   }, (error) => {
+  //     this.loading.dismiss();
+  //     alert('error :' + JSON.stringify(error));
+  //   });
+  // }
+  //
 
   doGoogleLogin() {
     this.startLoading().then(r => {
@@ -71,7 +123,7 @@ export class LoginComponent implements OnInit {
         });
       } else {
         this.authService.doGoogleLogin().then(() => {
-          this.router.navigate(['/home/profile']).then(r => this.loading.dismiss());
+          this.router.navigate(['/home/tab1']).then(r => this.loading.dismiss());
         });
       }
     });

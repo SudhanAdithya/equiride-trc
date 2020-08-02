@@ -5,14 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: 'AIzaSyA3xXnWIFTMnjEpo9kz8fsicHSHsqwhxsI',
-    authDomain: 'trcbooking-7ee2e.firebaseapp.com',
-    databaseURL: 'https://trcbooking-7ee2e.firebaseio.com',
-    projectId: 'trcbooking-7ee2e',
-    storageBucket: 'trcbooking-7ee2e.appspot.com',
-    messagingSenderId: '144627894349',
-    appId: '1:144627894349:web:a50b2b18351b270f91f404',
-    measurementId: 'G-EY0PZ5TCN7'
+    apiKey: 'AIzaSyAYIwcOZObPNlxtbi2cZ6o9PAkhUcuKXpQ',
+    authDomain: 'cedar-dogfish-285017.firebaseapp.com',
+    databaseURL: 'https://cedar-dogfish-285017.firebaseio.com',
+    projectId: 'cedar-dogfish-285017',
+    storageBucket: 'cedar-dogfish-285017.appspot.com',
+    messagingSenderId: '432502126830',
+    appId: '1:432502126830:web:c7691bd1ebe31009781bff'
   }
 };
 
