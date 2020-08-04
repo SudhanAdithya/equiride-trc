@@ -1,21 +1,15 @@
 <ion-content fullscreen class="ion-padding" scroll-y="false">
-    <ion-slides>
+    <ion-slides [options]="slideOpts" [pager]="true">
       <ion-slide>
         <div class="slide">
-          <img src="../../assets/4.png"/>
+          <img src="../../assets/slide-1.png"/>
           <h2>Welcome</h2>
-          <p> <b>Tirupur riding club (TRC)</b> promises horse riding in a way you've always dreamed of. We can make all of your riding fantasies come true because riding with us is truly fun, exciting, and adventurous!</p>
+          <p> <b>Tirupur riding club (TRC)</b> promises horse riding in a way you've always dreamed of. All of your riding fantasies can come true because riding with us is truly fun & adventurous!</p>
         </div>
       </ion-slide>
 
       <ion-slide>
-        <img src="../../assets/slide-4.png"/>
-        <h2>What is Ionic?</h2>
-        <p><b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.</p>
-      </ion-slide>
-
-      <ion-slide>
-        <img src="../../assets/slide-3.png"/>
+        <img src="../../assets/slide-2.png"/>
         <h2>Ready to Play?</h2>
         <ion-button fill="clear" (click)="doGoogleLogin()" >Continue with google <ion-icon slot="end" name="arrow-forward"></ion-icon></ion-button>
       </ion-slide>

@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   {
+    path: 'menu',
+    loadChildren: () => import('./menus/menus.module').then(m => m.MenusModule)
+  },
+  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'

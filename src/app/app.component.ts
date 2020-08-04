@@ -4,6 +4,9 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { timer } from 'rxjs';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +18,14 @@ export class AppComponent {
   name;
   imgUrl;
   showSubmenu = false;
+  showSplash = true;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private fireAuth: AngularFireAuth
+    private fireAuth: AngularFireAuth,
+    private router: Router,
+    private menuController: MenuController
   ) {
     this.initializeApp();
     this.fireAuth.onAuthStateChanged(user => {
@@ -35,6 +41,12 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      timer(5000).subscribe(() => { this.showSplash = false; });
     });
+  }
+
+  async navigate(route) {
+    await this.router.navigate([`/menu/${route}`]);
+    await this.menuController.close();
   }
 }

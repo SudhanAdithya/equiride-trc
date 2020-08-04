@@ -2,11 +2,12 @@ import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Tab1Page } from './tab1.page';
+import { SettingsComponent } from './settings.component';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
-import { Tab1PageRoutingModule } from './tab1-routing.module';
-import { HeaderComponent } from '../header/header.component';
+import { SettingsRoutingModule } from './settings-routing.module';
+import { TabsPageModule } from '../tabs/tabs.module';
+import {HeaderComponent} from '../header/header.component';
 
 @NgModule({
   imports: [
@@ -14,11 +15,12 @@ import { HeaderComponent } from '../header/header.component';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule
+    SettingsRoutingModule,
+    TabsPageModule
   ],
   exports: [
     HeaderComponent
   ],
-  declarations: [Tab1Page, HeaderComponent]
+  declarations: [SettingsComponent, HeaderComponent]
 })
-export class Tab1PageModule {}
+export class SettingsModule {}
