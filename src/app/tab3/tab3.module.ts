@@ -7,7 +7,8 @@ import { Tab3Page } from './tab3.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab3PageRoutingModule } from './tab3-routing.module'
-import {HeaderComponent} from '../header/header.component';
+import {HeaderModule} from '../header/header.module';
+
 
 @NgModule({
   imports: [
@@ -15,12 +16,11 @@ import {HeaderComponent} from '../header/header.component';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    RouterModule.forChild([{ path: '', component: Tab3Page }]),
+    RouterModule.forChild([{path: '', component: Tab3Page}]),
     Tab3PageRoutingModule,
+    HeaderModule,
   ],
-  exports: [
-    HeaderComponent
-  ],
-  declarations: [Tab3Page, HeaderComponent]
+
+  declarations: [Tab3Page ]
 })
 export class Tab3PageModule {}

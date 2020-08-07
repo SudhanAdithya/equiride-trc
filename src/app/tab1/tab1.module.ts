@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { HeaderComponent } from '../header/header.component';
+import {HeaderModule} from '../header/header.module';
 
 @NgModule({
   imports: [
@@ -14,11 +15,10 @@ import { HeaderComponent } from '../header/header.component';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule
+    Tab1PageRoutingModule,
+    HeaderModule
   ],
-  exports: [
-    HeaderComponent
-  ],
-  declarations: [Tab1Page, HeaderComponent]
+
+  declarations: [Tab1Page ]
 })
 export class Tab1PageModule {}

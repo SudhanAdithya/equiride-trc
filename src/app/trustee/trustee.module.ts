@@ -7,7 +7,8 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { TrusteeRoutingModule } from './trustee-routing.module';
 import {TabsPageModule} from '../tabs/tabs.module';
-import {HeaderComponent} from '../header/header.component';
+import {HeaderModule} from '../header/header.module';
+
 
 @NgModule({
   imports: [
@@ -16,11 +17,10 @@ import {HeaderComponent} from '../header/header.component';
     FormsModule,
     ExploreContainerComponentModule,
     TrusteeRoutingModule,
-    TabsPageModule
+    TabsPageModule,
+    HeaderModule
   ],
-  exports: [
-    HeaderComponent
-  ],
-  declarations: [TrusteeComponent, HeaderComponent]
+
+  declarations: [TrusteeComponent ]
 })
 export class TrusteeModule {}

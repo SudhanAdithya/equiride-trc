@@ -28,6 +28,10 @@ const routes: Routes = [
       {
         path: 'help',
         loadChildren: () => import('../help/help.module').then(m => m.HelpModule)
+      },
+      {
+        path: 'settings',
+        loadChildren: () => import('../settings/settings.module').then(m => m.SettingsModule)
       }
     ]
   },

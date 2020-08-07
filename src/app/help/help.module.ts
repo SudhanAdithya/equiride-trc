@@ -6,8 +6,8 @@ import { HelpComponent } from './help.component';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { HelpRoutingModule } from './help-routing.module';
-import {TabsPageModule} from '../tabs/tabs.module';
-import {HeaderComponent} from '../header/header.component';
+import { TabsPageModule } from '../tabs/tabs.module';
+import {HeaderModule} from '../header/header.module';
 
 
 @NgModule({
@@ -18,10 +18,8 @@ import {HeaderComponent} from '../header/header.component';
     ExploreContainerComponentModule,
     HelpRoutingModule,
     TabsPageModule,
+    HeaderModule,
   ],
-  exports: [
-    HeaderComponent
-  ],
-  declarations: [HelpComponent, HeaderComponent]
+  declarations: [HelpComponent]
 })
 export class HelpModule {}
