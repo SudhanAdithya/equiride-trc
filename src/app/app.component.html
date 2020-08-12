@@ -35,16 +35,16 @@
                             <ion-icon name="ribbon-sharp" style="height: .7em;"></ion-icon>
                             <ion-label style="font-size: .8em;">&nbsp;Board of Trustee's</ion-label>
                         </ion-item>
-                        <ion-item-divider>
+                        <ion-item-divider *ngIf="isAdmin">
                             <ion-label style="font-size: .8em;">
                                 For Admin
                             </ion-label>
                         </ion-item-divider>
-                        <ion-item routerDirection="root" lines="none" detail="true">
+                        <ion-item routerDirection="root" lines="none" detail="true" *ngIf="isAdmin">
                             <ion-icon name="shield-checkmark-sharp" style="height: .7em;"></ion-icon>
                             <ion-label style="font-size: .8em;">&nbsp;Approvals</ion-label>
                         </ion-item>
-                        <ion-item routerDirection="root" lines="none" detail="true">
+                        <ion-item routerDirection="root" lines="none" detail="true" *ngIf="isAdmin">
                             <ion-icon name="library-sharp" style="height: .7em;"></ion-icon>
                             <ion-label style="font-size: .8em;">&nbsp;Stock management</ion-label>
                         </ion-item>

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "432502126830",
+    "firebase_url": "https://cedar-dogfish-285017.firebaseio.com",
+    "project_id": "cedar-dogfish-285017",
+    "storage_bucket": "cedar-dogfish-285017.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:432502126830:android:bc0842779edddc2d781bff",
+        "android_client_info": {
+          "package_name": "com.trc.booking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "432502126830-rd073c5tedu6hhp2h5cdvuqo3uoqo5md.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.trc.booking",
+            "certificate_hash": "e9a0f64a18389337f1e1b9b3540221ccde4993ab"
+          }
+        },
+        {
+          "client_id": "432502126830-hf1k89ongmuo1t8d9pjlkfdsloksaeeu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkGlea3eEl1VRj0YoG5cMUOtrbShgT3-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "432502126830-hf1k89ongmuo1t8d9pjlkfdsloksaeeu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "432502126830-hhgglduakcl6flosokm2iuq6ouh4esc1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.trc.booking"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

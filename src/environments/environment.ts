@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  webClientId: '432502126830-hf1k89ongmuo1t8d9pjlkfdsloksaeeu.apps.googleusercontent.com',
   firebaseConfig : {
     apiKey: 'AIzaSyAYIwcOZObPNlxtbi2cZ6o9PAkhUcuKXpQ',
     authDomain: 'cedar-dogfish-285017.firebaseapp.com',

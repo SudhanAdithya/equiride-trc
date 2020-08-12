@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../core/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-privacy',
@@ -7,8 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivacyComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {}
+
+  doLogout() {
+    this.authService.doLogout().then(() => {
+      this.router.navigate(['/login']);
+    });
+  }
 
 }

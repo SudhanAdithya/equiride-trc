@@ -3,27 +3,23 @@ import * as firebase from 'firebase/app';
 import {Injectable} from '@angular/core';
 import {switchMap} from 'rxjs/operators';
 import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
-import {of} from 'rxjs';
+import {BehaviorSubject, of, Subject} from 'rxjs';
 import {Router} from '@angular/router';
 
 
 @Injectable()
 export class AuthService {
-  user$;
+  authState = null;
+  userData;
+  eventChanged = new BehaviorSubject<boolean>(false);
 
   constructor(
     private afAuth: AngularFireAuth,
     private afs: AngularFirestore,
     private router: Router) {
-    this.user$ = this.afAuth.authState.pipe(
-      switchMap(user => {
-        console.log(user.uid);
-        if (user) {
-          return this.afs.doc(`users/${user.uid}`).valueChanges();
-        } else {
-          return of(null);
-        }
-      }));
+    this.afAuth.authState.subscribe((auth) => {
+      this.authState = auth;
+    });
   }
 
   async doGoogleLogin() {
@@ -33,6 +29,43 @@ export class AuthService {
 
   async doLogout() {
     await this.afAuth.signOut();
+  }
+
+  get isAuthenticated() {
+    return this.authState !== null;
+  }
+
+  setUserData(data) {
+    this.userData = data;
+    this.eventChanged.next(true);
+  }
+
+  createUser(user) {
+    const data = {
+      bio: '',
+      doj: Date.now(),
+      email: this.authState.email,
+      last_login_date: Date.now(),
+      mobile_no: this.authState.phoneNumber,
+      profession: user.profession,
+      type: user.type,
+      uid: this.authState.uid,
+      name: this.authState.displayName,
+      horses: [],
+      boarding: false,
+      arena_book_count: 0,
+      party_book_count: 0
+    };
+    const devicesRef = this.afs.doc(`users/${this.authState.uid}`).update({last_login_date: Date.now()})
+      .then(() => {})
+      .catch((error) => {
+        this.afs.doc(`users/${this.authState.uid}`).set(data);
+      });
+    return devicesRef;
+  }
+
+  getUserData() {
+    return this.userData;
   }
 
   updateData(user) {

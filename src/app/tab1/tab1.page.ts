@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FcmService } from '../core/fcm.service';
+import { Platform, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -35,6 +37,29 @@ export class Tab1Page {
         icon  : 'logo-facebook'
       },
     ];
-  constructor() {}
+  constructor(public fcm: FcmService, public toastController: ToastController, private platform: Platform) {
+    this.platform.ready().then(() => {
+      this.notificationSetup();
+    });
+  }
+  private async presentToast(message) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 3000
+    });
+    toast.present();
+  }
+
+  private notificationSetup() {
+    this.fcm.getToken();
+    this.fcm.onNotifications().subscribe(
+      (msg) => {
+        if (this.platform.is('ios')) {
+          this.presentToast(msg.aps.alert);
+        } else {
+          this.presentToast(msg.body);
+        }
+      });
+  }
 
 }
