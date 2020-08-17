@@ -18,15 +18,20 @@ import {GooglePlus} from '@ionic-native/google-plus/ngx';
 import {FcmService} from './core/fcm.service';
 import {Firebase} from '@ionic-native/firebase/ngx';
 import {AuthGuard} from './core/auth.guard';
+import {PostPage} from './tab1/post/post.page';
+import {AngularFireStorageModule, BUCKET} from '@angular/fire/storage';
+import {ReactiveFormsModule} from '@angular/forms';
+import {PostCreateService} from './core/postCreate.service';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, PostPage],
+  entryComponents: [PostPage],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
     AngularFirestoreModule,
-    AngularFireAuthModule],
+    AngularFireStorageModule,
+    AngularFireAuthModule, ReactiveFormsModule],
   providers: [
     StatusBar,
     SplashScreen,
@@ -35,6 +40,8 @@ import {AuthGuard} from './core/auth.guard';
     Firebase,
     FcmService,
     AuthGuard,
+    PostCreateService,
+    { provide: BUCKET, useValue: 'gs://cedar-dogfish-285017.appspot.com' },
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
   bootstrap: [AppComponent]

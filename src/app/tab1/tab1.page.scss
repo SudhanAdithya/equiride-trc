@@ -1,0 +1,112 @@
+@import "~@ionic/angular/css/core.css";
+ion-refresher-content {
+  position: relative;
+  background-color: #d7d8da;
+  .refresher-pulling, .refresher-refreshing {
+    position: relative;
+    top: 30px;
+  }
+}
+ion-item{
+  border: none;
+}
+ion-badge{
+  margin-bottom: 0.2rem;
+  margin-left: 1.2rem;
+}
+.fab-icon-color{
+ color: #1DA1F2;
+}
+.postWrapper{
+  height: auto;
+  width: 100%;
+}
+.postHeader{
+  border-bottom:  none;
+  padding: 1rem 1rem;
+  height: 5rem;
+  .imageWrapper{
+    height: 3rem;
+    width: 3rem;
+  }
+  .detailsWrapper{
+    margin-left: 1rem;
+    height: 3rem;
+  }
+}
+.postBodyWrapper{
+  height: auto;
+  .postBody {
+    height: auto;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    p{
+      margin-top: 0;
+    }
+    .imageWrapper{
+      display: flex;
+      flex-wrap:wrap;
+      width: 100%;
+      float: left;
+      border: solid 1px;
+      border-radius: 1rem;
+      height: auto;
+      margin-bottom: 1rem;
+      overflow: auto;
+    }
+    .one-image{
+      flex-basis:100%;
+      padding-right: .1rem;
+      float: left;
+      border-radius: 1rem;
+    }
+    .two-images{
+      flex-basis:50%;
+      padding-right: .1rem;
+      float: left;
+      border-radius: 1rem;
+    }
+    .three-images{
+      flex-basis:33.33%;
+      padding-right: .1rem;
+      float: left;
+      border-radius: 1rem;
+      padding-top: 0.1rem;
+    }
+  }
+}
+.actionItemsWrapper{
+  height: 2rem;
+  .actionItems{
+    margin-left: 1rem;
+    margin-top: 1.5rem;
+    .like{
+      width: 25%;
+      float: left;
+      .icon-like{
+        font-size: 1.3rem;
+        color: indianred;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      span{
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+    .share{
+      width: 25%;
+      float: right;
+      .icon-share{
+        font-size: 1.4rem;
+      }
+    .bookmark {
+      width: 25%;
+      float: left;
+      .icon-bookmark{
+        font-size: 1.4rem;
+        }
+      }
+    }
+  }
+}

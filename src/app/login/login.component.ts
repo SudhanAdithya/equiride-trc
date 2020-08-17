@@ -64,6 +64,7 @@ export class LoginComponent implements OnInit {
         const { idToken, accessToken } = response;
         this.onLoginSuccess(idToken, accessToken);
       }).catch((error) => {
+      this.loading.dismiss();
       console.log(error);
     });
   }
@@ -85,9 +86,7 @@ export class LoginComponent implements OnInit {
         if (user) {
           member = data.find(({email}) => email === user.email);
           if (member) {
-            await this.authService.setUserData(member);
             await this.authService.createUser(member);
-            this.loggedIn.emit();
             this.router.navigate(['/home/tab1']).then(r => this.loading.dismiss());
           } else {
             alert('enroll for TRC');

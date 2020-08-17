@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { timer } from 'rxjs';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-import {AuthService} from './core/auth.service';
-import {AngularFirestore} from '@angular/fire/firestore';
+import { AuthService } from './core/auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { FcmService } from './core/fcm.service';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,9 @@ export class AppComponent {
     private fireAuth: AngularFireAuth,
     private router: Router,
     private menuController: MenuController,
-    private afs: AngularFirestore
+    private afs: AngularFirestore,
+    public fcm: FcmService,
+    public toastController: ToastController,
   ) {
     this.initializeApp();
   }
@@ -38,7 +41,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      timer(5000).subscribe(() => { this.showSplash = false; });
+      this.notificationSetup();
       this.fireAuth.onAuthStateChanged(user => {
         if (user) {
           this.imgUrl = user.photoURL;
@@ -59,9 +62,31 @@ export class AppComponent {
           this.router.navigate(['/login']);
         }
       });
+      timer(5000).subscribe(() => {
+        this.showSplash = false;
+      });
     });
   }
 
+  private async presentToast(message) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 3000
+    });
+    toast.present();
+  }
+
+  private notificationSetup() {
+    this.fcm.getToken();
+    this.fcm.onNotifications().subscribe(
+      (msg) => {
+        if (this.platform.is('ios')) {
+          this.presentToast(msg.aps.alert);
+        } else {
+          this.presentToast(msg.body);
+        }
+      });
+  }
 
   async navigate(route) {
     await this.router.navigate([`/menu/${route}`]);

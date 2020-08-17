@@ -1,9 +1,214 @@
 <app-header></app-header>
-<ion-content [fullscreen]="true">
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed">
-    <ion-fab-button color="dark">
-      <ion-icon name="add"></ion-icon>
+<ion-content>
+  <ion-refresher slot="fixed" pull-max="200" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="refresh"></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item *ngFor="let post of posts">
+      <div class="postWrapper">
+        <div class="postHeader">
+          <ion-avatar slot="start" class="imageWrapper ion-float-left">
+            <img [src]="post.photoURL">
+          </ion-avatar>
+          <ion-label class="detailsWrapper ion-float-left">
+            <h3>{{post.postedBy}}</h3>
+            <p>{{post.created_date}}</p>
+          </ion-label>
+        </div>
+        <div class="postBodyWrapper">
+          <div class="postBody">
+            <p>{{post.message}}</p>
+          </div>
+        </div>
+        <div class="actionItemsWrapper">
+          <div class="actionItems">
+            <div class="like ion-activatable ripple-parent">
+              <ion-icon class="icon-like" name="heart"></ion-icon><span>{{post.likes}} likes</span>
+              <ion-ripple-effect></ion-ripple-effect>
+            </div>
+            <div class="share" (click)="share($event)">
+              <ion-icon name="share-outline" class="icon-share"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+    <!--<ion-item>
+      <div class="postWrapper">
+        <div class="postHeader">
+          <ion-avatar slot="start" class="imageWrapper ion-float-left">
+            <img src="https://placehold.it/100">
+          </ion-avatar>
+          <ion-label class="detailsWrapper ion-float-left">
+            <h3>Lorem ipsum</h3>
+            <p>dolor sit amet</p>
+          </ion-label>
+        </div>
+        <div class="postBodyWrapper">
+          <div class="postBody">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+              labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+              in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+              cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+        </div>
+        <div class="actionItemsWrapper">
+          <div class="actionItems">
+            <div class="like ion-activatable ripple-parent">
+              <ion-icon class="icon-like" name="heart"></ion-icon><span>11 likes</span>
+              <ion-ripple-effect></ion-ripple-effect>
+            </div>
+            <div class="share" (click)="share($event)">
+              <ion-icon name="share-outline" class="icon-share"></ion-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-item>-->
+<!--    <ion-item>-->
+<!--      <div class="postWrapper">-->
+<!--        <div class="postHeader">-->
+<!--          <ion-avatar slot="start" class="imageWrapper ion-float-left">-->
+<!--            <img src="https://placehold.it/100">-->
+<!--          </ion-avatar>-->
+<!--          <ion-label class="detailsWrapper ion-float-left">-->
+<!--            <h3>Lorem ipsum</h3>-->
+<!--            <p>dolor sit amet</p>-->
+<!--          </ion-label>-->
+<!--        </div>-->
+<!--        <div class="postBodyWrapper">-->
+<!--          <div class="postBody">-->
+<!--            <p>This is a video post</p>-->
+<!--            <div class="imageWrapper">-->
+<!--              <div class="one-image" *ngFor="let item of items">-->
+<!--                  <ion-img [src]="item.avatar"></ion-img>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="actionItemsWrapper">-->
+<!--          <div class="actionItems">-->
+<!--            <div class="like ion-activatable ripple-parent">-->
+<!--              <ion-icon class="icon-like" name="heart"></ion-icon><span>11 likes</span>-->
+<!--              <ion-ripple-effect></ion-ripple-effect>-->
+<!--            </div>-->
+<!--            <div class="share">-->
+<!--              <ion-icon name="share-outline" class="icon-share"></ion-icon>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </ion-item>-->
+<!--    <ion-item>-->
+<!--      <div class="postWrapper">-->
+<!--        <div class="postHeader">-->
+<!--          <ion-avatar slot="start" class="imageWrapper ion-float-left">-->
+<!--            <img src="https://placehold.it/100">-->
+<!--          </ion-avatar>-->
+<!--          <ion-label class="detailsWrapper ion-float-left">-->
+<!--            <h3>Lorem ipsum</h3>-->
+<!--            <p>dolor sit amet</p>-->
+<!--          </ion-label>-->
+<!--        </div>-->
+<!--        <div class="postBodyWrapper">-->
+<!--          <div class="postBody">-->
+<!--            <p>This is a image post with one image</p>-->
+<!--            <div class="imageWrapper">-->
+<!--              <div class="one-image" *ngFor="let item of items">-->
+<!--                <ion-img [src]="item.avatar"></ion-img>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="actionItemsWrapper">-->
+<!--          <div class="actionItems">-->
+<!--            <div class="like ion-activatable ripple-parent">-->
+<!--              <ion-icon class="icon-like" name="heart"></ion-icon><span>11 likes</span>-->
+<!--              <ion-ripple-effect></ion-ripple-effect>-->
+<!--            </div>-->
+<!--            <div class="share">-->
+<!--              <ion-icon name="share-outline" class="icon-share"></ion-icon>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </ion-item>-->
+<!--    <ion-item>-->
+<!--      <div class="postWrapper">-->
+<!--        <div class="postHeader">-->
+<!--          <ion-avatar slot="start" class="imageWrapper ion-float-left">-->
+<!--            <img src="https://placehold.it/100">-->
+<!--          </ion-avatar>-->
+<!--          <ion-label class="detailsWrapper ion-float-left">-->
+<!--            <h3>Lorem ipsum</h3>-->
+<!--            <p>dolor sit amet</p>-->
+<!--          </ion-label>-->
+<!--        </div>-->
+<!--        <div class="postBodyWrapper">-->
+<!--          <div class="postBody">-->
+<!--            <p>This is a image post with two image</p>-->
+<!--            <div class="imageWrapper">-->
+<!--              <div class="two-images" *ngFor="let item of items2">-->
+<!--                <ion-img [src]="item.avatar"></ion-img>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="actionItemsWrapper">-->
+<!--          <div class="actionItems">-->
+<!--            <div class="like ion-activatable ripple-parent">-->
+<!--              <ion-icon class="icon-like" name="heart"></ion-icon><span>11 likes</span>-->
+<!--              <ion-ripple-effect></ion-ripple-effect>-->
+<!--            </div>-->
+<!--            <div class="share">-->
+<!--              <ion-icon name="share-outline" class="icon-share"></ion-icon>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </ion-item>-->
+<!--    <ion-item>-->
+<!--      <div class="postWrapper">-->
+<!--        <div class="postHeader">-->
+<!--          <ion-avatar slot="start" class="imageWrapper ion-float-left">-->
+<!--            <img src="https://placehold.it/100">-->
+<!--          </ion-avatar>-->
+<!--          <ion-label class="detailsWrapper ion-float-left">-->
+<!--            <h3>Lorem ipsum</h3>-->
+<!--            <p>dolor sit amet</p>-->
+<!--          </ion-label>-->
+<!--        </div>-->
+<!--        <div class="postBodyWrapper">-->
+<!--          <div class="postBody">-->
+<!--            <p>This is a image post with three + image</p>-->
+<!--            <div class="imageWrapper" scrollX="true">-->
+<!--              <div class="three-images" *ngFor="let item of items3">-->
+<!--                <ion-img [src]="item.avatar"></ion-img>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="actionItemsWrapper">-->
+<!--          <div class="actionItems">-->
+<!--            <div class="like ion-activatable ripple-parent">-->
+<!--              <ion-icon class="icon-like" name="heart"></ion-icon><span>11 likes</span>-->
+<!--              <ion-ripple-effect></ion-ripple-effect>-->
+<!--            </div>-->
+<!--            <div class="share">-->
+<!--              <ion-icon slot="end" name="share-outline" class="icon-share"></ion-icon>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </ion-item>-->
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="presentModal()">
+    <ion-fab-button color="light">
+      <ion-icon class="fab-icon-color" name="pencil-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <app-explore-container name="Tab 1 page"></app-explore-container>
 </ion-content>

@@ -1,65 +1,122 @@
-import { Component } from '@angular/core';
-import { FcmService } from '../core/fcm.service';
-import { Platform, ToastController } from '@ionic/angular';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FcmService} from '../core/fcm.service';
+import {ActionSheetController, ModalController, Platform, ToastController} from '@ionic/angular';
+import {Router} from '@angular/router';
+import {PostPage} from './post/post.page';
+import {PostCreateService} from '../core/postCreate.service';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit, OnDestroy{
 
-  navigate =
-    [
-      {
-        title : 'App',
-        url   : '/apps',
-        icon  : 'apps'
-      },
-      {
-        title : 'Book',
-        url   : '/book',
-        icon  : 'book'
-      },
-      {
-        title : 'Paint',
-        url   : '/paint',
-        icon  : 'brush'
-      },
-      {
-        title : 'Contacts',
-        url   : '/contacts',
-        icon  : 'contacts'
-      },
-      {
-        title : 'Facebook',
-        url   : '/facebook.com',
-        icon  : 'logo-facebook'
-      },
-    ];
-  constructor(public fcm: FcmService, public toastController: ToastController, private platform: Platform) {
-    this.platform.ready().then(() => {
-      this.notificationSetup();
-    });
+  subscription;
+  posts = [];
+  items = [
+    {name: 'Hasan Sezen', avatar: 'https://placehold.it/316X160', groep: 'Groep 1'},
+  ];
+  items2 = [
+    {name: 'Hasan Sezen', avatar: 'https://placehold.it/158X160', groep: 'Groep 1'},
+    {name: 'Hasan Sezen', avatar: 'https://placehold.it/158X160', groep: 'Groep 1'},
+  ];
+  items3 = [
+    {name: 'Hasan Sezen', avatar: 'https://placehold.it/105X160', groep: 'Groep 1'},
+    {name: 'Hasan Sezen', avatar: 'https://placehold.it/105X160', groep: 'Groep 1'},
+    {name: 'Hasan Sezen', avatar: 'https://placehold.it/105X160', groep: 'Groep 1'},
+    {name: 'Hasan Sezen', avatar: 'https://placehold.it/105X160', groep: 'Groep 1'},
+  ];
+
+  constructor(private router: Router,
+              private actionSheetController: ActionSheetController,
+              private platform: Platform,
+              private postCreateService: PostCreateService,
+              public modalController: ModalController) {}
+
+  ngOnInit() {
+    this.ionViewDidEnter();
+    this.getPosts();
   }
-  private async presentToast(message) {
-    const toast = await this.toastController.create({
-      message,
-      duration: 3000
-    });
-    toast.present();
+  ngOnDestroy() {
+    this.ionViewWillLeave();
   }
 
-  private notificationSetup() {
-    this.fcm.getToken();
-    this.fcm.onNotifications().subscribe(
-      (msg) => {
-        if (this.platform.is('ios')) {
-          this.presentToast(msg.aps.alert);
-        } else {
-          this.presentToast(msg.body);
+  getPosts() {
+    this.postCreateService.getAllPosts().subscribe((data) => {
+      this.posts = data;
+      console.log(data);
+    }) ;
+  }
+
+  doRefresh(event) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
+  loadData(event) {
+    console.log('Begin async operation');
+    setTimeout(() => {
+      event.target.complete();
+      event.target.disabled = true;
+    }, 2000);
+  }
+
+  async share(event) {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Share Post',
+      cssClass: 'my-custom-class',
+      buttons: [{
+        text: 'Add to Bookmarks',
+        icon: 'bookmark',
+        handler: () => {
+          console.log('Delete clicked');
         }
-      });
+      }, {
+        text: 'Copy link to Post',
+        icon: 'link',
+        handler: () => {
+          console.log('link clicked');
+        }
+      }, {
+        text: 'Share Post via...',
+        icon: 'share',
+        handler: () => {
+          console.log('share clicked');
+        }
+      }, {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: PostPage,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
+  }
+
+  ionViewDidEnter() {
+    this.subscription = this.platform.backButton.subscribeWithPriority(9999, () => {
+      // do nothing
+    });
+  }
+
+  ionViewWillLeave() {
+    this.subscription.unsubscribe();
+  }
+
+  navigate() {
+    this.router.navigate(['/home/tab1/post']);
+  }
 }

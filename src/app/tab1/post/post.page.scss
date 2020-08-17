@@ -1,0 +1,39 @@
+ion-text{
+  margin-left: 1.3rem;
+}
+p{
+  color: #1DA1F2;
+  cursor: pointer;
+}
+.scrolling-wrapper-flexbox {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  .card {
+    flex: 0 0 auto;
+  }
+}
+.scrolling-wrapper {
+  -webkit-overflow-scrolling: touch;
+}
+.scrolling-wrapper {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.footerToolbar{
+  font-size: 1.5rem;
+  padding: .9rem;
+}
+.delete {
+  position: absolute;
+  top: 0;
+  padding-right: 5rem;
+  font-size: 1.5rem;
+  color: gray;
+}
+.ripple-parent {
+  position: relative;
+  overflow: hidden;
+}
