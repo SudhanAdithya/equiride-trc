@@ -47,10 +47,11 @@ ion-badge{
       display: flex;
       flex-wrap:wrap;
       width: 100%;
+      min-width: 100%;
       float: left;
       border: solid 1px;
       border-radius: 1rem;
-      height: auto;
+      min-height: 10rem;
       margin-bottom: 1rem;
       overflow: auto;
     }
@@ -81,7 +82,7 @@ ion-badge{
     margin-left: 1rem;
     margin-top: 1.5rem;
     .like{
-      width: 25%;
+      width: 50%;
       float: left;
       .icon-like{
         font-size: 1.3rem;

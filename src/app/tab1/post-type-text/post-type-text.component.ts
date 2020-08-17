@@ -53,7 +53,7 @@ export class PostTypeTextComponent implements OnInit {
   updateLikes(postId, currentLikes) {
     setTimeout(() => {
       this.postService.updateLikes(postId, currentLikes);
-    }, 1000);
+    }, 500);
   }
 
 }

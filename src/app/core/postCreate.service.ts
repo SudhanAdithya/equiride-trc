@@ -38,7 +38,7 @@ export class PostService {
   }
 
   getAllPosts() {
-    return this.afs.collection(`posts`).valueChanges({ idField: 'postId' });
+    return this.afs.collection('posts', (ref) => ref.orderBy('created_date', 'desc')).valueChanges({ idField: 'postId' });
   }
 
   updateLikes(postId, currentLikes) {
