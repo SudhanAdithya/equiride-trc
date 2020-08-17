@@ -1,0 +1,32 @@
+<div class="postWrapper">
+  <div class="postHeader">
+    <ion-avatar slot="start" class="imageWrapper ion-float-left">
+      <img src="https://placehold.it/100">
+    </ion-avatar>
+    <ion-label class="detailsWrapper ion-float-left">
+      <h3>Lorem ipsum</h3>
+      <p>dolor sit amet</p>
+    </ion-label>
+  </div>
+  <div class="postBodyWrapper">
+    <div class="postBody">
+      <p>This is a image post with three + image</p>
+      <div class="imageWrapper" scrollX="true">
+        <div class="three-images" *ngFor="let item of items3">
+          <ion-img [src]="item.avatar"></ion-img>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actionItemsWrapper">
+    <div class="actionItems">
+      <div class="like ion-activatable ripple-parent">
+        <ion-icon class="icon-like" name="heart"></ion-icon><span>11 likes</span>
+        <ion-ripple-effect></ion-ripple-effect>
+      </div>
+      <div class="share">
+        <ion-icon slot="end" name="share-outline" class="icon-share"></ion-icon>
+      </div>
+    </div>
+  </div>
+</div>

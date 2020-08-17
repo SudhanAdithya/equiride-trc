@@ -8,7 +8,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
 import { map} from 'rxjs/operators';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import {AuthService} from '../../core/auth.service';
-import {PostCreateService} from '../../core/postCreate.service';
+import {PostService} from '../../core/postCreate.service';
 
 @Component({
   selector: 'app-post',
@@ -38,7 +38,7 @@ export class PostPage implements OnInit{
               private storage: AngularFireStorage,
               private formBuilder: FormBuilder,
               private authService: AuthService,
-              private postCreateService: PostCreateService,
+              private postService: PostService,
               public imagePicker: ImagePicker) {}
 
   ngOnInit() {
@@ -126,7 +126,7 @@ export class PostPage implements OnInit{
 
   postData() {
     const type = 1;
-    this.postCreateService.createPost(this.message, type).then(() => {
+    this.postService.createPost(this.message, type).then(() => {
       this.dismiss();
     });
   }

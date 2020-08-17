@@ -5,8 +5,9 @@ import {Router} from '@angular/router';
 
 
 @Injectable()
-export class PostCreateService {
+export class PostService {
   authState = null;
+  posts;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -37,6 +38,12 @@ export class PostCreateService {
   }
 
   getAllPosts() {
-    return this.afs.collection(`posts`).valueChanges();
+    return this.afs.collection(`posts`).valueChanges({ idField: 'postId' });
+  }
+
+  updateLikes(postId, currentLikes) {
+    this.afs.doc(`posts/${postId}`).update({likes: currentLikes + 1}).then(() => {})
+      .catch((error) => {
+      });
   }
 }

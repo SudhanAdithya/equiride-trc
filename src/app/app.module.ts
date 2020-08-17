@@ -21,7 +21,7 @@ import {AuthGuard} from './core/auth.guard';
 import {PostPage} from './tab1/post/post.page';
 import {AngularFireStorageModule, BUCKET} from '@angular/fire/storage';
 import {ReactiveFormsModule} from '@angular/forms';
-import {PostCreateService} from './core/postCreate.service';
+import {PostService} from './core/postCreate.service';
 
 @NgModule({
   declarations: [AppComponent, PostPage],
@@ -40,7 +40,7 @@ import {PostCreateService} from './core/postCreate.service';
     Firebase,
     FcmService,
     AuthGuard,
-    PostCreateService,
+    PostService,
     { provide: BUCKET, useValue: 'gs://cedar-dogfish-285017.appspot.com' },
     {provide: RouteReuseStrategy, useClass: IonicRouteStrategy}
   ],
