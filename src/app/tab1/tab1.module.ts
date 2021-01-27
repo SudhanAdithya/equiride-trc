@@ -16,7 +16,11 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { PhotoLibrary } from '@ionic-native/photo-library/ngx';
 import { HeaderModule } from '../header/header.module';
+import { File } from '@ionic-native/file/ngx';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { CDVPhotoLibraryPipe } from '../pipes/cdvphotolibrary.pipe';
+
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -26,12 +30,15 @@ import { CDVPhotoLibraryPipe } from '../pipes/cdvphotolibrary.pipe';
     ExploreContainerComponentModule,
     Tab1PageRoutingModule,
     HeaderModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
   ],
   providers: [
     Camera,
     ImagePicker,
-    PhotoLibrary
+    PhotoLibrary,
+    File,
+    WebView
   ],
   declarations: [
     Tab1Page,

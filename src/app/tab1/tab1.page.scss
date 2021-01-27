@@ -14,12 +14,17 @@ ion-badge{
   margin-bottom: 0.2rem;
   margin-left: 1.2rem;
 }
+ion-title {
+  text-align: center;
+}
+
 .fab-icon-color{
  color: #1DA1F2;
 }
 .postWrapper{
   height: auto;
   width: 100%;
+  min-height: 10rem;
 }
 .postHeader{
   border-bottom:  none;
@@ -51,28 +56,24 @@ ion-badge{
       float: left;
       border: solid 1px;
       border-radius: 1rem;
-      min-height: 10rem;
+      min-height: 9rem;
       margin-bottom: 1rem;
       overflow: auto;
     }
     .one-image{
       flex-basis:100%;
-      padding-right: .1rem;
       float: left;
       border-radius: 1rem;
     }
     .two-images{
       flex-basis:50%;
-      padding-right: .1rem;
       float: left;
       border-radius: 1rem;
     }
     .three-images{
       flex-basis:33.33%;
-      padding-right: .1rem;
       float: left;
       border-radius: 1rem;
-      padding-top: 0.1rem;
     }
   }
 }

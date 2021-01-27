@@ -13,7 +13,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {environment} from '../environments/environment';
-import {AuthService} from '../app/core/auth.service';
+import {AuthService} from './core/auth.service';
 import {GooglePlus} from '@ionic-native/google-plus/ngx';
 import {FcmService} from './core/fcm.service';
 import {Firebase} from '@ionic-native/firebase/ngx';

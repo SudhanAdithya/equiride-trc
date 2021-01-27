@@ -30,7 +30,7 @@ export class Tab1Page implements OnInit, OnDestroy{
   getPosts() {
     this.postService.getAllPosts().subscribe((data) => {
       this.posts = data;
-    }) ;
+    });
   }
 
   doRefresh(event) {

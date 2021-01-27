@@ -1,15 +1,29 @@
-<app-header></app-header>
-<ion-content>
+<ion-header class="ion-no-border" #header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <img alt="logo" id="header_logo" height="40" float-left src="assets/slide-1.png">
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigate()">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content scrollEvents="true" appHideHeader [header]="header">
   <ion-refresher slot="fixed" pull-max="200" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="refresh"></ion-refresher-content>
   </ion-refresher>
   <ion-list>
     <ion-item *ngFor="let post of posts">
       <app-post-type-text *ngIf="post.type === 1" [post]="post" style="width: 100%;"></app-post-type-text>
-      <app-post-type-one-image *ngIf="post.type === 2" style="width: 100%;"></app-post-type-one-image>
-      <app-post-type-two-image *ngIf="post.type === 3" style="width: 100%;"></app-post-type-two-image>
-      <app-post-type-three-image *ngIf="post.type === 4" style="width: 100%;"></app-post-type-three-image>
-      <app-post-type-video *ngIf="post.type === 5" style="width: 100%;"></app-post-type-video>
+      <app-post-type-one-image *ngIf="post.type === 2" [post]="post" style="width: 100%;"></app-post-type-one-image>
+      <app-post-type-two-image *ngIf="post.type === 3" [post]="post" style="width: 100%;"></app-post-type-two-image>
+      <app-post-type-three-image *ngIf="post.type === 4" [post]="post" style="width: 100%;"></app-post-type-three-image>
+      <app-post-type-video *ngIf="post.type === 5" [post]="post" style="width: 100%;"></app-post-type-video>
     </ion-item>
   </ion-list>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">

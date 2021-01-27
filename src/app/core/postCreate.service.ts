@@ -18,7 +18,7 @@ export class PostService {
     });
   }
 
-  createPost(message, type) {
+  createPost(payload, type) {
     const data = {
       type,
       postedBy: this.authState.displayName,
@@ -28,9 +28,9 @@ export class PostService {
       email: this.authState.email,
       uid: this.authState.uid,
       name: this.authState.displayName,
-      message,
-      image: [],
-      video: []
+      message: payload.messages,
+      image: payload.images,
+      video: payload.videos
     };
     const postId = Math.random().toString(36).substring(2);
     const postRef = this.afs.doc(`posts/${postId}`).set(data);

@@ -6,7 +6,7 @@
         <ion-chip slot="end" color="primary" *ngIf="!enablePost">
             <ion-label>Post</ion-label>
         </ion-chip>
-        <ion-chip slot="end" outline color="secondary" *ngIf="enablePost" (click)="postData()">
+        <ion-chip slot="end" color="secondary" *ngIf="enablePost" (click)="postData()">
             <ion-label>Post</ion-label>
         </ion-chip>
     </ion-toolbar>
@@ -21,49 +21,40 @@
             </ion-col>
             <ion-col size="9.5">
                 <form [formGroup]="post">
-                    <ion-item>
-                        <ion-textarea autofocus rows="6"  [(ngModel)]="message" formControlName="message" placeholder="Whats happening?" ></ion-textarea>
-                    </ion-item>
+                    <ion-textarea rows="6"  formControlName="message" placeholder="Whats happening?" ></ion-textarea>
                 </form>
             </ion-col>
         </ion-row>
         <ion-row>
             <ion-col size="12">
                     <ion-slides [options]="{ slidesPerView: 'auto', zoom: false, grabCursor: true }">
-                        <ion-slide class="ion-activatable ripple-parent" *ngFor="let img of imageResponse" style="width: 105px; height: 160px; border: 1px solid #f8f8f8">
-                            <img style="pointer-events:none" src="{{img}}">
-                            <ion-icon class="delete" name="close-circle-outline">
-                            </ion-icon>
+                        <ion-slide class="ion-activatable ripple-parent" *ngFor="let img of imageResponse; let index = index;" style="width: 105px; height: 160px; border: 1px solid #f8f8f8">
+                            <img style="pointer-events:none" src="{{img.data}}">
                             <ion-ripple-effect></ion-ripple-effect>
+                            <ion-icon class="delete" (click)="deleteImage(img.id, index)" name="close-circle-outline"></ion-icon>
                         </ion-slide>
                     </ion-slides>
-<!--                <label for="file">File:</label>-->
-<!--                <input id="file" name="image"  autocomplete="off"  #userPhoto type="file" (change)="onFileSelected($event)" accept=".png,.jpg" />-->
-            </ion-col>
+           </ion-col>
         </ion-row>
     </ion-grid>
 </ion-content>
 <ion-footer class="ion-no-border">
-    <ion-progress-bar color="secondary" *ngIf="uploadProgress" [value]="(uploadProgress | async)"></ion-progress-bar>
+    <ion-progress-bar type="indeterminate" color="secondary" *ngIf="uploadProgress" [value]="(uploadProgress | async)"></ion-progress-bar>
     <ion-toolbar>
         <ion-item slot="start">
             <div class="ion-activatable ripple-parent">
-                <ion-icon class="footerToolbar" (click)="accessCamera()" name="camera-outline"></ion-icon>
-                <ion-ripple-effect></ion-ripple-effect>
-            </div>
+                <ion-icon class="footerToolbar" (click)="getImages()" name="image-outline"></ion-icon>
 
-            <div class="ion-activatable ripple-parent">
-                <ion-icon class="footerToolbar" (click)="getImages()" name="images-outline"></ion-icon>
                 <ion-ripple-effect></ion-ripple-effect>
             </div>
             <div class="ion-activatable ripple-parent">
-                <ion-icon class="footerToolbar" (click)="getImages()" name="videocam-outline"></ion-icon>
+                <ion-icon class="footerToolbar" (click)="getVideos()" name="videocam-outline"></ion-icon>
                 <ion-ripple-effect></ion-ripple-effect>
             </div>
         </ion-item>
         <ion-item slot="end">
             <div class="ion-activatable ripple-parent">
-                <ion-icon class="footerToolbar" (click)="accessCamera()" name="pie-chart-outline"></ion-icon>
+                <ion-icon class="footerToolbar" (click)="accessCamera()" name="camera-outline"></ion-icon>
                 <ion-ripple-effect></ion-ripple-effect>
             </div>
         </ion-item>

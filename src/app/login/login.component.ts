@@ -6,7 +6,7 @@ import {LoadingController, Platform} from '@ionic/angular';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {GooglePlus} from '@ionic-native/google-plus/ngx';
 import { slider } from '../config/slider';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 import { environment } from '../../environments/environment';
 
 @Component({

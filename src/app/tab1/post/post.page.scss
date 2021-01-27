@@ -23,15 +23,17 @@ p{
   }
 }
 .footerToolbar{
-  font-size: 1.5rem;
-  padding: .9rem;
+  font-size: 1.3rem;
+  padding: 0.9rem;
 }
 .delete {
   position: absolute;
-  top: 0;
-  padding-right: 5rem;
+  bottom: 0;
   font-size: 1.5rem;
-  color: gray;
+  color: white;
+  background-color: dimgrey;
+  display: block;
+  width: 100%;
 }
 .ripple-parent {
   position: relative;

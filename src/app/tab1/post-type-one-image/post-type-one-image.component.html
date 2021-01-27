@@ -1,30 +1,30 @@
 <div class="postWrapper">
   <div class="postHeader">
     <ion-avatar slot="start" class="imageWrapper ion-float-left">
-      <img src="https://placehold.it/100">
+      <img [src]="post.photoURL">
     </ion-avatar>
     <ion-label class="detailsWrapper ion-float-left">
-      <h3>Lorem ipsum</h3>
-      <p>dolor sit amet</p>
+      <h3>{{post.postedBy}}</h3>
+      <p>{{post.created_date | date : 'MMM d, y h:mm a' }}</p>
     </ion-label>
   </div>
   <div class="postBodyWrapper">
     <div class="postBody">
-      <p>This is a image post with one image</p>
+      <p>{{post.message}}</p>
       <div class="imageWrapper">
-        <div class="one-image" *ngFor="let item of items">
-          <ion-img [src]="item.avatar"></ion-img>
+        <div class="one-image" *ngFor="let item of thumbnail">
+          <ion-img [src]="item"></ion-img>
         </div>
       </div>
     </div>
   </div>
   <div class="actionItemsWrapper">
-    <div class="actionItems">
-      <div class="like ion-activatable ripple-parent">
-        <ion-icon class="icon-like" name="heart"></ion-icon><span>11 likes</span>
+    <div class="actionItems" >
+      <div class="like ion-activatable ripple-parent" (click)="updateLikes(post.postId, post.likes)">
+        <ion-icon class="icon-like" name="heart"></ion-icon><span>{{post.likes}} likes</span>
         <ion-ripple-effect></ion-ripple-effect>
       </div>
-      <div class="share">
+      <div class="share" (click)="share($event)">
         <ion-icon name="share-outline" class="icon-share"></ion-icon>
       </div>
     </div>
