@@ -1,6 +1,152 @@
-<app-header></app-header>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/tab1" color="medium"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <span class="page-title">Our Facilities</span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-explore-container name="Facility page"></app-explore-container>
-  <app-tabs></app-tabs>
+  <div class="facility-wrapper">
+    <!-- Hero -->
+    <div class="facility-hero glass-card">
+      <div class="hero-icon">
+        <ion-icon name="earth-outline"></ion-icon>
+      </div>
+      <h2 class="hero-title">World-Class Amenities</h2>
+      <p class="hero-desc">Experience luxury beyond the saddle at Tirupur Riding Club</p>
+    </div>
+
+    <!-- Facility Cards -->
+    <div class="facilities-grid">
+
+      <!-- Swimming Pool -->
+      <div class="facility-card glass-card animate-slide-up" style="animation-delay: 0.05s">
+        <div class="facility-image-wrapper">
+          <img src="assets/facility-pool.png" alt="Swimming Pool">
+          <div class="facility-tag">
+            <ion-icon name="water-outline"></ion-icon>
+            <span>Pool</span>
+          </div>
+        </div>
+        <div class="facility-info">
+          <h3 class="facility-name">Infinity Pool & Deck</h3>
+          <p class="facility-desc">A stunning outdoor infinity pool surrounded by lush palm trees and sun loungers.
+            Perfect for unwinding after an exhilarating riding session. Heated water, poolside service, and sunset views
+            included.</p>
+          <div class="facility-features">
+            <div class="feature-chip">
+              <ion-icon name="resize-outline"></ion-icon>
+              <span>25m × 12m</span>
+            </div>
+            <div class="feature-chip">
+              <ion-icon name="time-outline"></ion-icon>
+              <span>6 AM – 9 PM</span>
+            </div>
+            <div class="feature-chip">
+              <ion-icon name="sunny-outline"></ion-icon>
+              <span>Heated</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rooms / Stay -->
+      <div class="facility-card glass-card animate-slide-up" style="animation-delay: 0.12s">
+        <div class="facility-image-wrapper">
+          <img src="assets/facility-rooms.png" alt="Guest Rooms">
+          <div class="facility-tag tag-teal">
+            <ion-icon name="bed-outline"></ion-icon>
+            <span>Stay</span>
+          </div>
+        </div>
+        <div class="facility-info">
+          <h3 class="facility-name">Luxury Suites & Cottages</h3>
+          <p class="facility-desc">Elegantly appointed rooms with panoramic views of the riding arenas and countryside.
+            Each suite features rustic-luxury interiors with equestrian décor, premium linens, and private balconies
+            overlooking the pastures.</p>
+          <div class="facility-features">
+            <div class="feature-chip">
+              <ion-icon name="home-outline"></ion-icon>
+              <span>12 Suites</span>
+            </div>
+            <div class="feature-chip">
+              <ion-icon name="wifi-outline"></ion-icon>
+              <span>Free Wi-Fi</span>
+            </div>
+            <div class="feature-chip">
+              <ion-icon name="car-outline"></ion-icon>
+              <span>Parking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bar -->
+      <div class="facility-card glass-card animate-slide-up" style="animation-delay: 0.19s">
+        <div class="facility-image-wrapper">
+          <img src="assets/facility-bar.png" alt="Lounge Bar">
+          <div class="facility-tag tag-purple">
+            <ion-icon name="wine-outline"></ion-icon>
+            <span>Bar</span>
+          </div>
+        </div>
+        <div class="facility-info">
+          <h3 class="facility-name">The Equestrian Lounge</h3>
+          <p class="facility-desc">A sophisticated cocktail bar featuring dark wood interiors, vintage equestrian
+            artwork, and premium spirits. The perfect place to socialize with fellow riders over craft cocktails and
+            curated wine selections.</p>
+          <div class="facility-features">
+            <div class="feature-chip">
+              <ion-icon name="wine-outline"></ion-icon>
+              <span>50+ Spirits</span>
+            </div>
+            <div class="feature-chip">
+              <ion-icon name="time-outline"></ion-icon>
+              <span>5 PM – 12 AM</span>
+            </div>
+            <div class="feature-chip">
+              <ion-icon name="musical-notes-outline"></ion-icon>
+              <span>Live Music</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kitchen / Restaurant -->
+      <div class="facility-card glass-card animate-slide-up" style="animation-delay: 0.26s">
+        <div class="facility-image-wrapper">
+          <img src="assets/facility-pool.png" alt="Restaurant">
+          <div class="facility-tag tag-warm">
+            <ion-icon name="restaurant-outline"></ion-icon>
+            <span>Dine</span>
+          </div>
+        </div>
+        <div class="facility-info">
+          <h3 class="facility-name">Farm-to-Table Kitchen</h3>
+          <p class="facility-desc">Our open-concept restaurant serves South Indian cuisine alongside international
+            favorites, prepared with locally sourced ingredients. Enjoy breakfast buffets on the terrace overlooking the
+            training grounds.</p>
+          <div class="facility-features">
+            <div class="feature-chip">
+              <ion-icon name="leaf-outline"></ion-icon>
+              <span>Organic</span>
+            </div>
+            <div class="feature-chip">
+              <ion-icon name="time-outline"></ion-icon>
+              <span>7 AM – 11 PM</span>
+            </div>
+            <div class="feature-chip">
+              <ion-icon name="people-outline"></ion-icon>
+              <span>80 Seats</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </ion-content>

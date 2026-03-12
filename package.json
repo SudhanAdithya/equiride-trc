@@ -1,8 +1,8 @@
 {
-  "name": "trcbooking",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "name": "equiride-trc",
+  "version": "2.0.0",
+  "author": "Sudhan M",
+  "homepage": "https://github.com/manoj000/equiride-trc",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

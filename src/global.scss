@@ -1,13 +1,10 @@
 /*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * TRC — Global Styles
+ * Premium dark equestrian design system
  */
+
+/* Google Fonts — Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
@@ -18,9 +15,347 @@
 @import "~@ionic/angular/css/typography.css";
 @import '~@ionic/angular/css/display.css';
 
-/* Optional CSS utils that can be commented out */
+/* Optional CSS utils */
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* ===== Global Typography ===== */
+* {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: var(--trc-bg-primary);
+    color: var(--trc-text-primary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    color: var(--trc-text-primary);
+}
+
+p {
+    font-family: 'Inter', sans-serif;
+    color: var(--trc-text-secondary);
+    line-height: 1.6;
+}
+
+/* ===== Global Animations ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(212, 167, 106, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(212, 167, 106, 0.4);
+    }
+}
+
+@keyframes floatUp {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+/* ===== Glassmorphism Card ===== */
+.glass-card {
+    background: var(--trc-glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--trc-glass-border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+/* ===== Gradient Utilities ===== */
+.gradient-gold-text {
+    background: var(--trc-gradient-gold);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.gradient-gold-bg {
+    background: var(--trc-gradient-gold);
+}
+
+.gradient-dark-bg {
+    background: var(--trc-gradient-dark);
+}
+
+/* ===== Avatar Utilities ===== */
+.avatar-ring {
+    padding: 2px;
+    border-radius: 50%;
+    background: var(--trc-gradient-gold);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-ring img,
+.avatar-ring ion-avatar {
+    border-radius: 50%;
+    border: 2px solid var(--trc-bg-primary);
+}
+
+/* ===== Button Utilities ===== */
+.btn-gold {
+    --background: linear-gradient(135deg, #D4A76A 0%, #E8C992 100%);
+    --border-radius: 12px;
+    --color: #0F1117;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    --box-shadow: 0 4px 16px rgba(212, 167, 106, 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-glass {
+    --background: rgba(26, 29, 38, 0.6);
+    --border-radius: 12px;
+    --color: var(--trc-text-primary);
+    border: 1px solid var(--trc-glass-border);
+    backdrop-filter: blur(10px);
+    font-weight: 500;
+    text-transform: none;
+}
+
+/* ===== Card Shadows ===== */
+.shadow-soft {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-gold {
+    box-shadow: 0 4px 20px rgba(212, 167, 106, 0.15);
+}
+
+/* ===== Section Headers ===== */
+.section-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--trc-text-muted);
+    padding: 16px 16px 8px 16px;
+}
+
+/* ===== Ionic Overrides for Dark Theme ===== */
+ion-content {
+    --background: var(--trc-bg-primary);
+}
+
+ion-header ion-toolbar {
+    --background: var(--trc-bg-primary);
+    --border-color: transparent;
+    --color: var(--trc-text-primary);
+}
+
+ion-tab-bar {
+    --background: var(--trc-bg-primary);
+    --border: none;
+    border-top: 1px solid rgba(212, 167, 106, 0.08);
+}
+
+ion-tab-button {
+    --color: var(--trc-text-muted);
+    --color-selected: var(--trc-gold);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+ion-item {
+    --background: transparent;
+    --border-color: rgba(212, 167, 106, 0.08);
+    --color: var(--trc-text-primary);
+    --detail-icon-color: var(--trc-text-muted);
+}
+
+ion-list {
+    background: transparent;
+    --ion-item-background: transparent;
+}
+
+ion-card {
+    --background: var(--trc-bg-card);
+    border: 1px solid var(--trc-glass-border);
+    border-radius: 16px;
+    margin: 8px 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+ion-card-header ion-card-title {
+    color: var(--trc-text-primary);
+    font-weight: 600;
+}
+
+ion-card-header ion-card-subtitle {
+    color: var(--trc-text-secondary);
+}
+
+ion-label {
+    --color: var(--trc-text-primary) !important;
+}
+
+ion-label p {
+    color: var(--trc-text-secondary) !important;
+}
+
+ion-label h3 {
+    color: var(--trc-text-primary) !important;
+    font-weight: 600 !important;
+}
+
+ion-menu {
+    --background: var(--trc-bg-primary);
+    --width: 280px;
+}
+
+ion-menu ion-content {
+    --background: var(--trc-bg-primary);
+}
+
+ion-badge {
+    --background: var(--trc-gold);
+    --color: #0F1117;
+    font-weight: 600;
+    border-radius: 8px;
+}
+
+ion-refresher-content {
+    --color: var(--trc-gold);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--trc-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(212, 167, 106, 0.3);
+    border-radius: 4px;
+}
+
+/* Animation classes */
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.4s ease-out forwards;
+}
+
+/* Stagger children animations */
+.stagger-children>*:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.stagger-children>*:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.stagger-children>*:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.stagger-children>*:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+.stagger-children>*:nth-child(5) {
+    animation-delay: 0.25s;
+}
+
+.stagger-children>*:nth-child(6) {
+    animation-delay: 0.3s;
+}
+
+.stagger-children>*:nth-child(7) {
+    animation-delay: 0.35s;
+}
+
+.stagger-children>*:nth-child(8) {
+    animation-delay: 0.4s;
+}

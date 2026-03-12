@@ -1,69 +1,117 @@
 <div *ngIf="showSplash" class="splash">
-    <div class="spinner">
-        <div class="dot1"></div>
-        <div class="dot2"></div>
+    <div class="splash-content">
+        <div class="splash-logo">
+            <ion-icon name="ribbon-outline"></ion-icon>
+        </div>
+        <h1 class="splash-title">TRC</h1>
+        <p class="splash-subtitle">Tirupur Riding Club</p>
+        <div class="splash-loader">
+            <div class="loader-bar"></div>
+        </div>
     </div>
 </div>
 <ion-app>
     <ion-split-pane contentId="main-content">
-        <ion-menu menuId="mainMenu" contentId="main-content" type="push">
+        <ion-menu menuId="mainMenu" contentId="main-content" type="overlay">
             <ion-content>
-                <ion-menu-toggle auto-hide="true">
-                    <ion-list id="inbox-list" lines="none">
-                        <ion-item>
-                            <ion-avatar slot="start">
-                                <img src="{{imgUrl}}">
-                            </ion-avatar>
-                            <ion-label>
-                                <h3>{{name}}</h3>
-                                <p>{{email}}</p>
-                            </ion-label>
-                        </ion-item>
-                        <ion-item routerDirection="root" (click)="navigate('profile')" lines="none" detail="false">
-                            <ion-icon name="person-circle-sharp" style="height: .7em;"></ion-icon>
-                            <ion-label style="font-size: .8em;">&nbsp;Your Profile</ion-label>
-                        </ion-item>
-                        <ion-item routerDirection="root" (click)="navigate('horses')" lines="none" detail="false">
-                            <ion-icon name="paw-sharp" style="height: .7em;"></ion-icon>
-                            <ion-label style="font-size: .8em;">&nbsp;Know your Horses</ion-label>
-                        </ion-item>
-                        <ion-item routerDirection="root" (click)="navigate('facility')" lines="none" detail="false">
-                            <ion-icon name="earth-sharp" style="height: .7em;"></ion-icon>
-                            <ion-label style="font-size: .8em;">&nbsp;Facilities at TRC</ion-label>
-                        </ion-item>
-                        <ion-item routerDirection="root" (click)="navigate('trustee')" lines="none" detail="false">
-                            <ion-icon name="ribbon-sharp" style="height: .7em;"></ion-icon>
-                            <ion-label style="font-size: .8em;">&nbsp;Board of Trustee's</ion-label>
-                        </ion-item>
-                        <ion-item-divider *ngIf="isAdmin">
-                            <ion-label style="font-size: .8em;">
-                                For Admin
-                            </ion-label>
-                        </ion-item-divider>
-                        <ion-item routerDirection="root" lines="none" detail="true" *ngIf="isAdmin">
-                            <ion-icon name="shield-checkmark-sharp" style="height: .7em;"></ion-icon>
-                            <ion-label style="font-size: .8em;">&nbsp;Approvals</ion-label>
-                        </ion-item>
-                        <ion-item routerDirection="root" lines="none" detail="true" *ngIf="isAdmin">
-                            <ion-icon name="library-sharp" style="height: .7em;"></ion-icon>
-                            <ion-label style="font-size: .8em;">&nbsp;Stock management</ion-label>
-                        </ion-item>
-                    </ion-list>
-                </ion-menu-toggle>
+                <div class="menu-wrapper">
+                    <!-- Profile Header -->
+                    <div class="menu-header">
+                        <div class="menu-header-bg"></div>
+                        <div class="menu-profile">
+                            <div class="avatar-ring-menu">
+                                <img src="{{imgUrl}}" onerror="this.src='assets/slide-1.png'">
+                            </div>
+                            <h3 class="menu-name">{{name || 'Rider'}}</h3>
+                            <p class="menu-email">{{email || 'member@trc.club'}}</p>
+                        </div>
+                    </div>
+
+                    <!-- Menu Items -->
+                    <ion-menu-toggle auto-hide="true">
+                        <div class="menu-section">
+                            <p class="menu-section-label">EXPLORE</p>
+
+                            <div class="menu-item" (click)="navigate('profile')">
+                                <div class="menu-item-icon">
+                                    <ion-icon name="person-outline"></ion-icon>
+                                </div>
+                                <span>Your Profile</span>
+                                <ion-icon name="chevron-forward-outline" class="menu-item-arrow"></ion-icon>
+                            </div>
+
+                            <div class="menu-item" (click)="navigate('horses')">
+                                <div class="menu-item-icon">
+                                    <ion-icon name="paw-outline"></ion-icon>
+                                </div>
+                                <span>Know your Horses</span>
+                                <ion-icon name="chevron-forward-outline" class="menu-item-arrow"></ion-icon>
+                            </div>
+
+                            <div class="menu-item" (click)="navigate('facility')">
+                                <div class="menu-item-icon">
+                                    <ion-icon name="earth-outline"></ion-icon>
+                                </div>
+                                <span>Facilities at TRC</span>
+                                <ion-icon name="chevron-forward-outline" class="menu-item-arrow"></ion-icon>
+                            </div>
+
+                            <div class="menu-item" (click)="navigate('trustee')">
+                                <div class="menu-item-icon">
+                                    <ion-icon name="ribbon-outline"></ion-icon>
+                                </div>
+                                <span>Board of Trustees</span>
+                                <ion-icon name="chevron-forward-outline" class="menu-item-arrow"></ion-icon>
+                            </div>
+                        </div>
+
+                        <div class="menu-section" *ngIf="isAdmin">
+                            <p class="menu-section-label">ADMIN</p>
+
+                            <div class="menu-item">
+                                <div class="menu-item-icon admin-icon">
+                                    <ion-icon name="shield-checkmark-outline"></ion-icon>
+                                </div>
+                                <span>Approvals</span>
+                                <ion-icon name="chevron-forward-outline" class="menu-item-arrow"></ion-icon>
+                            </div>
+
+                            <div class="menu-item">
+                                <div class="menu-item-icon admin-icon">
+                                    <ion-icon name="library-outline"></ion-icon>
+                                </div>
+                                <span>Stock Management</span>
+                                <ion-icon name="chevron-forward-outline" class="menu-item-arrow"></ion-icon>
+                            </div>
+                        </div>
+
+                        <div class="menu-section menu-section-bottom">
+                            <p class="menu-section-label">SETTINGS</p>
+
+                            <div class="menu-item" (click)="navigate('privacy')">
+                                <div class="menu-item-icon">
+                                    <ion-icon name="settings-outline"></ion-icon>
+                                </div>
+                                <span>Settings & Privacy</span>
+                                <ion-icon name="chevron-forward-outline" class="menu-item-arrow"></ion-icon>
+                            </div>
+
+                            <div class="menu-item" (click)="navigate('help')">
+                                <div class="menu-item-icon">
+                                    <ion-icon name="help-circle-outline"></ion-icon>
+                                </div>
+                                <span>Help Center</span>
+                                <ion-icon name="chevron-forward-outline" class="menu-item-arrow"></ion-icon>
+                            </div>
+                        </div>
+                    </ion-menu-toggle>
+
+                    <!-- Footer branding -->
+                    <div class="menu-footer">
+                        <p class="menu-version">TRC v2.0 — Made with ♥</p>
+                    </div>
+                </div>
             </ion-content>
-            <ion-footer>
-                <ion-item-divider>
-                    <ion-label style="font-size: .8em;">
-                        Others
-                    </ion-label>
-                </ion-item-divider>
-                <ion-item routerDirection="root" (click)="navigate('privacy')" lines="none" detail="false">
-                    <ion-label style="font-size: .8em;">Setting and privacy</ion-label>
-                </ion-item>
-                <ion-item routerDirection="root" (click)="navigate('help')" lines="none" detail="false">
-                    <ion-label style="font-size: .8em;">Help Center</ion-label>
-                </ion-item>
-            </ion-footer>
         </ion-menu>
         <ion-router-outlet id="main-content"></ion-router-outlet>
     </ion-split-pane>

@@ -1,75 +1,247 @@
-/* Without setting height the slides will take up the height of the slide's content */
-ion-slides {
+/* TRC Login — Premium Dark Equestrian Design */
+
+.login-content {
+  --background: #0F1117;
+}
+
+.login-wrapper {
+  position: relative;
+  width: 100%;
   height: 100%;
-}
-ion-menu-button {
-  color: var(--ion-color-primary);
+  overflow: hidden;
 }
 
-.my-custom-class {
-  --background: #222;
-  --spinner-color: #fff;
-
-  color: #fff;
-}
-
-#container {
-  text-align: center;
+/* ===== Hero Background ===== */
+.login-hero {
   position: absolute;
+  top: 0;
   left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/login-hero.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg,
+      rgba(15, 17, 23, 0.3) 0%,
+      rgba(15, 17, 23, 0.5) 30%,
+      rgba(15, 17, 23, 0.85) 65%,
+      rgba(15, 17, 23, 0.98) 100%);
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  color: #8c8c8c;
+/* ===== Content ===== */
+.login-content-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 32px 60px;
+}
+
+/* ===== Logo Section ===== */
+.logo-section {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 20px;
+  background: rgba(212, 167, 106, 0.15);
+  border: 1px solid rgba(212, 167, 106, 0.3);
+  margin-bottom: 20px;
+  animation: pulseGlow 3s ease-in-out infinite;
+
+  ion-icon {
+    font-size: 36px;
+    color: #D4A76A;
+  }
+}
+
+.club-name {
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: 8px;
   margin: 0;
+  background: linear-gradient(135deg, #D4A76A 0%, #E8C992 50%, #D4A76A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-#container a {
-  text-decoration: none;
-}
-
-.swiper-slide {
-  display: block;
-}
-
-.swiper-slide h2 {
-  margin-top: 2.8rem;
-}
-
-.swiper-slide img {
-  max-height: 50%;
-  max-width: 80%;
-  margin: 60px 0 40px;
-  pointer-events: none;
-}
-
-b {
-  font-weight: 500;
-}
-
-p {
-  padding: 0 40px;
+.club-full-name {
   font-size: 14px;
-  line-height: 1.5;
-  color: var(--ion-color-step-600, #60646b);
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(229, 231, 235, 0.7);
+  margin: 4px 0 0;
 }
 
-p b {
-  color: var(--ion-text-color, #000000);
+/* ===== Tagline ===== */
+.tagline-section {
+  text-align: center;
+  margin-bottom: 40px;
 }
 
-.swiper-container-horizontal > .swiper-pagination
-{
-  bottom          : 50%; //Change accordingly
-  z-index         : 99 !important;
+.tagline {
+  font-size: 16px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(229, 231, 235, 0.6);
+  margin: 0 0 16px;
+  letter-spacing: 0.5px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.divider-line {
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 167, 106, 0.5), transparent);
+}
+
+.divider-icon {
+  font-size: 12px;
+  color: #D4A76A;
+}
+
+/* ===== CTA Button ===== */
+.cta-section {
+  text-align: center;
+}
+
+.google-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 320px;
+  padding: 16px 24px;
+  background: rgba(26, 29, 38, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 167, 106, 0.25);
+  border-radius: 16px;
+  color: #E5E7EB;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+
+  &:hover,
+  &:active {
+    background: rgba(212, 167, 106, 0.12);
+    border-color: rgba(212, 167, 106, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(212, 167, 106, 0.15);
+  }
+}
+
+.google-icon {
+  flex-shrink: 0;
+}
+
+.arrow-icon {
+  font-size: 18px;
+  color: #D4A76A;
+}
+
+.terms-text {
+  font-size: 11px;
+  color: rgba(229, 231, 235, 0.3);
+  margin-top: 16px;
+  letter-spacing: 0.3px;
+}
+
+/* ===== Bottom Decoration ===== */
+.bottom-decoration {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(229, 231, 235, 0.2);
+
+  &.active {
+    background: #D4A76A;
+    width: 20px;
+    border-radius: 3px;
+  }
+}
+
+/* ===== Animations ===== */
+.animate-slide-up {
+  opacity: 0;
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(212, 167, 106, 0.15);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(212, 167, 106, 0.3);
+  }
 }

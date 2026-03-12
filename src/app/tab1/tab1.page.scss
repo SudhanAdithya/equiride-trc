@@ -1,114 +1,266 @@
-@import "~@ionic/angular/css/core.css";
+/* TRC — Feed Page Styles */
+
+/* ===== Header ===== */
+ion-toolbar {
+  --background: #0F1117;
+  --border-color: transparent;
+  --min-height: 52px;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #D4A76A 0%, #E8C992 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-dot {
+  color: #4B5563;
+  margin: 0 6px;
+  font-size: 18px;
+}
+
+.header-subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: #9CA3AF;
+}
+
+ion-title {
+  text-align: left;
+  padding-left: 0;
+}
+
+/* ===== Stories ===== */
+.stories-container {
+  padding: 16px 0 8px;
+  border-bottom: 1px solid rgba(212, 167, 106, 0.06);
+}
+
+.stories-scroll {
+  display: flex;
+  overflow-x: auto;
+  padding: 0 12px;
+  gap: 16px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.story-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.story-ring {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  padding: 2.5px;
+  background: #2A2D36;
+  transition: transform 0.2s ease;
+
+  &.has-story {
+    background: linear-gradient(135deg, #D4A76A, #E8C992, #2EC4B6);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2.5px solid #0F1117;
+  }
+}
+
+.story-name {
+  font-size: 10px;
+  font-weight: 500;
+  color: #9CA3AF;
+  max-width: 60px;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ===== Feed Container ===== */
+.feed-container {
+  padding: 12px 0;
+}
+
+/* ===== Post Card ===== */
+.post-card {
+  margin: 8px 14px 12px;
+  padding: 0;
+  animation-fill-mode: both;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  gap: 12px;
+}
+
+.post-avatar-ring {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 1.5px;
+  background: linear-gradient(135deg, #D4A76A, #E8C992);
+  flex-shrink: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid #0F1117;
+  }
+}
+
+.post-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-username {
+  font-size: 14px;
+  font-weight: 600;
+  color: #E5E7EB;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.post-time {
+  font-size: 11px;
+  color: #6B7280;
+  margin: 2px 0 0;
+}
+
+.post-more {
+  font-size: 18px;
+  color: #4B5563;
+  cursor: pointer;
+}
+
+/* Post Body */
+.post-body {
+  padding: 0 16px;
+}
+
+.post-message {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #D1D5DB;
+  margin: 0 0 12px;
+  font-weight: 400;
+}
+
+.post-image-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.post-image {
+  width: 100%;
+  height: auto;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Post Actions */
+.post-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px 14px;
+}
+
+.action-left {
+  display: flex;
+  gap: 16px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #6B7280;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  ion-icon {
+    font-size: 19px;
+    transition: all 0.2s ease;
+  }
+
+  &:active {
+    transform: scale(0.92);
+  }
+}
+
+.like-btn {
+  .liked {
+    color: #F87171 !important;
+  }
+}
+
+/* ===== FAB Button ===== */
+.fab-button {
+  --background: linear-gradient(135deg, #D4A76A 0%, #E8C992 100%);
+  --color: #0F1117;
+  --box-shadow: 0 4px 20px rgba(212, 167, 106, 0.35);
+  width: 52px;
+  height: 52px;
+
+  ion-icon {
+    font-size: 24px;
+  }
+}
+
+/* ===== Ionic Overrides ===== */
 ion-refresher-content {
   position: relative;
-  background-color: #d7d8da;
-  .refresher-pulling, .refresher-refreshing {
+  background-color: #0F1117;
+
+  .refresher-pulling,
+  .refresher-refreshing {
     position: relative;
     top: 30px;
   }
 }
-ion-item{
-  border: none;
-}
-ion-badge{
-  margin-bottom: 0.2rem;
-  margin-left: 1.2rem;
-}
-ion-title {
-  text-align: center;
+
+ion-item {
+  --background: transparent;
+  --border-color: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
 }
 
-.fab-icon-color{
- color: #1DA1F2;
-}
-.postWrapper{
-  height: auto;
-  width: 100%;
-  min-height: 10rem;
-}
-.postHeader{
-  border-bottom:  none;
-  padding: 1rem 1rem;
-  height: 5rem;
-  .imageWrapper{
-    height: 3rem;
-    width: 3rem;
-  }
-  .detailsWrapper{
-    margin-left: 1rem;
-    height: 3rem;
-  }
-}
-.postBodyWrapper{
-  height: auto;
-  .postBody {
-    height: auto;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    p{
-      margin-top: 0;
-    }
-    .imageWrapper{
-      display: flex;
-      flex-wrap:wrap;
-      width: 100%;
-      min-width: 100%;
-      float: left;
-      border: solid 1px;
-      border-radius: 1rem;
-      min-height: 9rem;
-      margin-bottom: 1rem;
-      overflow: auto;
-    }
-    .one-image{
-      flex-basis:100%;
-      float: left;
-      border-radius: 1rem;
-    }
-    .two-images{
-      flex-basis:50%;
-      float: left;
-      border-radius: 1rem;
-    }
-    .three-images{
-      flex-basis:33.33%;
-      float: left;
-      border-radius: 1rem;
-    }
-  }
-}
-.actionItemsWrapper{
-  height: 2rem;
-  .actionItems{
-    margin-left: 1rem;
-    margin-top: 1.5rem;
-    .like{
-      width: 50%;
-      float: left;
-      .icon-like{
-        font-size: 1.3rem;
-        color: indianred;
-        display: inline-block;
-        vertical-align: middle;
-      }
-      span{
-        display: inline-block;
-        vertical-align: middle;
-      }
-    }
-    .share{
-      width: 25%;
-      float: right;
-      .icon-share{
-        font-size: 1.4rem;
-      }
-    .bookmark {
-      width: 25%;
-      float: left;
-      .icon-bookmark{
-        font-size: 1.4rem;
-        }
-      }
-    }
-  }
+ion-list {
+  background: transparent;
 }

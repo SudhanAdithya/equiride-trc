@@ -1,0 +1,190 @@
+/* TRC — Booking Page Styles */
+
+ion-toolbar {
+    --background: #0F1117;
+    --border-color: transparent;
+}
+
+.page-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #E5E7EB;
+}
+
+.booking-wrapper {
+    padding: 12px 16px 32px;
+}
+
+/* Hero Card */
+.booking-hero {
+    padding: 28px 24px;
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.hero-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: rgba(212, 167, 106, 0.12);
+    margin-bottom: 16px;
+
+    ion-icon {
+        font-size: 28px;
+        color: #D4A76A;
+    }
+}
+
+.hero-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #E5E7EB;
+    margin: 0 0 8px;
+}
+
+.hero-desc {
+    font-size: 13px;
+    color: #6B7280;
+    margin: 0;
+}
+
+/* Booking Form */
+.booking-form {
+    padding: 24px 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+
+    &.half {
+        flex: 1;
+    }
+}
+
+.form-row {
+    display: flex;
+    gap: 12px;
+}
+
+.form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #9CA3AF;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.required {
+    color: #D4A76A;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background: rgba(15, 17, 23, 0.6);
+    border: 1px solid rgba(212, 167, 106, 0.1);
+    border-radius: 12px;
+    padding: 0 14px;
+    transition: all 0.2s ease;
+
+    &:focus-within {
+        border-color: rgba(212, 167, 106, 0.35);
+        background: rgba(15, 17, 23, 0.8);
+    }
+}
+
+.textarea-wrapper {
+    align-items: flex-start;
+    padding-top: 12px;
+}
+
+.input-icon {
+    font-size: 18px;
+    color: #4B5563;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.custom-input {
+    --color: #E5E7EB;
+    --placeholder-color: #4B5563;
+    --placeholder-opacity: 1;
+    --padding-start: 0;
+    --padding-end: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* Duration Chips */
+.duration-options {
+    display: flex;
+    gap: 10px;
+}
+
+.duration-chip {
+    flex: 1;
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 10px;
+    background: rgba(15, 17, 23, 0.6);
+    border: 1px solid rgba(212, 167, 106, 0.08);
+    color: #6B7280;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &.active {
+        background: rgba(212, 167, 106, 0.1);
+        border-color: rgba(212, 167, 106, 0.35);
+        color: #D4A76A;
+        font-weight: 600;
+    }
+
+    &:hover {
+        border-color: rgba(212, 167, 106, 0.2);
+        color: #9CA3AF;
+    }
+}
+
+/* Submit Button */
+.submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #D4A76A 0%, #E8C992 100%);
+    color: #0F1117;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(212, 167, 106, 0.3);
+    margin-top: 8px;
+
+    &:active {
+        transform: translateY(1px);
+        box-shadow: 0 2px 12px rgba(212, 167, 106, 0.2);
+    }
+
+    ion-icon {
+        font-size: 18px;
+    }
+}
+
+/* Alert controller override */
+ion-alert-controller {
+    display: none;
+}

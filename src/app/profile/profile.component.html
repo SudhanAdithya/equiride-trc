@@ -1,6 +1,91 @@
-<app-header></app-header>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/tab1" color="medium"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <span class="page-title">Profile</span>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="create-outline" color="medium"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content [fullscreen]="true">
-  <app-explore-container name="Profile page"></app-explore-container>
-  <app-tabs></app-tabs>
+  <div class="profile-wrapper">
+    <!-- Profile Hero -->
+    <div class="profile-hero glass-card">
+      <div class="hero-banner">
+        <div class="banner-overlay"></div>
+      </div>
+
+      <div class="profile-info">
+        <div class="avatar-container">
+          <div class="avatar-ring-large">
+            <img [src]="userProfile.avatar" [alt]="userProfile.name">
+          </div>
+          <div class="online-badge"></div>
+        </div>
+
+        <h2 class="profile-name">{{userProfile.name}}</h2>
+        <p class="profile-role">{{userProfile.role}}</p>
+        <p class="profile-bio">{{userProfile.bio}}</p>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-value">{{userProfile.rides}}</span>
+            <span class="stat-label">Rides</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">{{userProfile.posts}}</span>
+            <span class="stat-label">Posts</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value">{{userProfile.following}}</span>
+            <span class="stat-label">Following</span>
+          </div>
+        </div>
+
+        <!-- Edit Button -->
+        <button class="edit-btn">
+          <ion-icon name="pencil-outline"></ion-icon>
+          <span>Edit Profile</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Badges -->
+    <div class="badges-section">
+      <p class="section-label">ACHIEVEMENTS</p>
+      <div class="badges-row">
+        <div class="badge-item" *ngFor="let badge of userProfile.badges">
+          <div class="badge-icon" [style.background]="badge.bg">
+            <ion-icon [name]="badge.icon"></ion-icon>
+          </div>
+          <span class="badge-name">{{badge.name}}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- My Posts -->
+    <div class="my-posts-section">
+      <p class="section-label">MY POSTS</p>
+      <div class="my-post-card glass-card" *ngFor="let post of userProfile.recentPosts">
+        <p class="my-post-text">{{post.message}}</p>
+        <div class="my-post-footer">
+          <span class="my-post-date">{{post.date}}</span>
+          <div class="my-post-stats">
+            <span><ion-icon name="heart"></ion-icon> {{post.likes}}</span>
+            <span><ion-icon name="chatbubble"></ion-icon> {{post.comments}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

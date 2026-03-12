@@ -1,38 +1,84 @@
-<app-header></app-header>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="medium"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <span class="page-title">Book a Ride</span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content fullscreen>
-  <form onsubmit="processForm(event)">
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <ion-item>
-        <ion-label position="stacked">First Name <ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Email<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required type="text"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Pick your date </ion-label>
-        <ion-datetime displayFormat="MM DD YY" min="2020" max="2020" placeholder="Select Date"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label>Start time </ion-label>
-        <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label>End time </ion-label>
-        <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label position="stacked">Notes</ion-label>
-        <ion-textarea></ion-textarea>
-      </ion-item>
-    </ion-list>
-
-    <div class="ion-padding">
-      <ion-button expand="block" type="submit" class="ion-no-margin">Create account</ion-button>
+  <div class="booking-wrapper">
+    <!-- Hero Card -->
+    <div class="booking-hero glass-card">
+      <div class="hero-icon">
+        <ion-icon name="calendar-outline"></ion-icon>
+      </div>
+      <h2 class="hero-title">Schedule Your Session</h2>
+      <p class="hero-desc">Reserve your riding slot with our expert trainers</p>
     </div>
-  </form>
+
+    <!-- Booking Form -->
+    <div class="booking-form glass-card">
+      <form onsubmit="processForm(event)">
+        <div class="form-group">
+          <label class="form-label">Full Name <span class="required">*</span></label>
+          <div class="input-wrapper">
+            <ion-icon name="person-outline" class="input-icon"></ion-icon>
+            <ion-input type="text" placeholder="Enter your name" class="custom-input"></ion-input>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Email Address <span class="required">*</span></label>
+          <div class="input-wrapper">
+            <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+            <ion-input type="email" placeholder="your@email.com" class="custom-input"></ion-input>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half">
+            <label class="form-label">Preferred Date</label>
+            <div class="input-wrapper">
+              <ion-icon name="calendar-outline" class="input-icon"></ion-icon>
+              <ion-datetime displayFormat="MMM DD, YY" min="2026" max="2027" placeholder="Select"
+                class="custom-input"></ion-datetime>
+            </div>
+          </div>
+          <div class="form-group half">
+            <label class="form-label">Start Time</label>
+            <div class="input-wrapper">
+              <ion-icon name="time-outline" class="input-icon"></ion-icon>
+              <ion-datetime displayFormat="h:mm A" minuteValues="0,15,30,45" placeholder="Time"
+                class="custom-input"></ion-datetime>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Session Duration</label>
+          <div class="duration-options">
+            <div class="duration-chip active">30 min</div>
+            <div class="duration-chip">1 hour</div>
+            <div class="duration-chip">2 hours</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Additional Notes</label>
+          <div class="input-wrapper textarea-wrapper">
+            <ion-textarea placeholder="Any preferences or requirements..." rows="3" class="custom-input"></ion-textarea>
+          </div>
+        </div>
+
+        <button class="submit-btn" type="submit">
+          <span>Book Session</span>
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </button>
+      </form>
+    </div>
+  </div>
 </ion-content>
-<ion-alert-controller></ion-alert-controller>
-
-

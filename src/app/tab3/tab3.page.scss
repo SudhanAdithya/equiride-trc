@@ -1,0 +1,126 @@
+/* TRC — Notifications Page Styles */
+
+ion-toolbar {
+    --background: #0F1117;
+    --border-color: transparent;
+}
+
+.page-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #E5E7EB;
+}
+
+.notif-wrapper {
+    padding: 8px 16px 32px;
+}
+
+.notif-section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #6B7280;
+    margin: 20px 4px 12px;
+}
+
+.notif-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+    margin-bottom: 10px;
+    animation-fill-mode: both;
+}
+
+.notif-icon-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    ion-icon {
+        font-size: 20px;
+    }
+}
+
+.icon-success {
+    background: rgba(52, 211, 153, 0.12);
+
+    ion-icon {
+        color: #34D399;
+    }
+}
+
+.icon-like {
+    background: rgba(248, 113, 113, 0.12);
+
+    ion-icon {
+        color: #F87171;
+    }
+}
+
+.icon-follow {
+    background: rgba(46, 196, 182, 0.12);
+
+    ion-icon {
+        color: #2EC4B6;
+    }
+}
+
+.icon-event {
+    background: rgba(212, 167, 106, 0.12);
+
+    ion-icon {
+        color: #D4A76A;
+    }
+}
+
+.icon-comment {
+    background: rgba(124, 92, 252, 0.12);
+
+    ion-icon {
+        color: #7C5CFC;
+    }
+}
+
+.icon-achievement {
+    background: rgba(251, 191, 36, 0.12);
+
+    ion-icon {
+        color: #FBBF24;
+    }
+}
+
+.icon-reminder {
+    background: rgba(212, 167, 106, 0.12);
+
+    ion-icon {
+        color: #D4A76A;
+    }
+}
+
+.notif-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.notif-text {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #9CA3AF;
+    margin: 0 0 4px;
+
+    strong {
+        color: #E5E7EB;
+        font-weight: 600;
+    }
+}
+
+.notif-time {
+    font-size: 11px;
+    color: #4B5563;
+    font-weight: 500;
+}

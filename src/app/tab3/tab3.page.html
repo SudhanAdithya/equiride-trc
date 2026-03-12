@@ -1,4 +1,45 @@
-<app-header></app-header>
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button color="medium"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <span class="page-title">Notifications</span>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="checkmark-done-outline" color="medium"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content [fullscreen]="true">
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <div class="notif-wrapper">
+    <!-- Today Section -->
+    <p class="notif-section-label">TODAY</p>
+    <div class="notif-card glass-card animate-slide-up" *ngFor="let notif of todayNotifs; let i = index"
+      [style.animation-delay]="(i * 0.08) + 's'">
+      <div class="notif-icon-wrap" [ngClass]="notif.iconClass">
+        <ion-icon [name]="notif.icon"></ion-icon>
+      </div>
+      <div class="notif-content">
+        <p class="notif-text"><strong>{{notif.title}}</strong> {{notif.message}}</p>
+        <span class="notif-time">{{notif.time}}</span>
+      </div>
+    </div>
+
+    <!-- Earlier Section -->
+    <p class="notif-section-label">EARLIER</p>
+    <div class="notif-card glass-card animate-slide-up" *ngFor="let notif of earlierNotifs; let i = index"
+      [style.animation-delay]="((i + 3) * 0.08) + 's'">
+      <div class="notif-icon-wrap" [ngClass]="notif.iconClass">
+        <ion-icon [name]="notif.icon"></ion-icon>
+      </div>
+      <div class="notif-content">
+        <p class="notif-text"><strong>{{notif.title}}</strong> {{notif.message}}</p>
+        <span class="notif-time">{{notif.time}}</span>
+      </div>
+    </div>
+  </div>
 </ion-content>

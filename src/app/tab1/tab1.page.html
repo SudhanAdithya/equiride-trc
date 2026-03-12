@@ -1,37 +1,88 @@
 <ion-header class="ion-no-border" #header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-menu-button color="medium"></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      <img alt="logo" id="header_logo" height="40" float-left src="assets/slide-1.png">
+      <span class="header-title">TRC</span>
+      <span class="header-dot">·</span>
+      <span class="header-subtitle">Feed</span>
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="navigate()">
-        <ion-icon name="settings-outline"></ion-icon>
+        <ion-icon name="settings-outline" color="medium"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content scrollEvents="true" appHideHeader [header]="header">
   <ion-refresher slot="fixed" pull-max="200" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="refresh"></ion-refresher-content>
   </ion-refresher>
-  <ion-list>
-    <ion-item *ngFor="let post of posts">
-      <app-post-type-text *ngIf="post.type === 1" [post]="post" style="width: 100%;"></app-post-type-text>
-      <app-post-type-one-image *ngIf="post.type === 2" [post]="post" style="width: 100%;"></app-post-type-one-image>
-      <app-post-type-two-image *ngIf="post.type === 3" [post]="post" style="width: 100%;"></app-post-type-two-image>
-      <app-post-type-three-image *ngIf="post.type === 4" [post]="post" style="width: 100%;"></app-post-type-three-image>
-      <app-post-type-video *ngIf="post.type === 5" [post]="post" style="width: 100%;"></app-post-type-video>
-    </ion-item>
-  </ion-list>
+
+  <!-- Stories Row -->
+  <div class="stories-container">
+    <div class="stories-scroll">
+      <div class="story-item" *ngFor="let user of storyUsers">
+        <div class="story-ring" [class.has-story]="user.hasStory">
+          <img [src]="user.avatar" [alt]="user.name">
+        </div>
+        <span class="story-name">{{user.name}}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feed Posts -->
+  <div class="feed-container stagger-children">
+    <div class="post-card glass-card animate-slide-up" *ngFor="let post of displayPosts; let i = index"
+      [style.animation-delay]="(i * 0.08) + 's'">
+      <!-- Post Header -->
+      <div class="post-header">
+        <div class="post-avatar-ring">
+          <img [src]="post.photoURL" [alt]="post.postedBy">
+        </div>
+        <div class="post-user-info">
+          <h4 class="post-username">{{post.postedBy}}</h4>
+          <p class="post-time">{{post.timeAgo || (post.created_date | date : 'MMM d, y h:mm a')}}</p>
+        </div>
+        <ion-icon name="ellipsis-horizontal" class="post-more"></ion-icon>
+      </div>
+
+      <!-- Post Body -->
+      <div class="post-body">
+        <p class="post-message">{{post.message}}</p>
+        <div class="post-image-wrapper" *ngIf="post.image && post.image.length > 0">
+          <img [src]="post.image[0]" class="post-image" [alt]="post.message">
+        </div>
+      </div>
+
+      <!-- Post Actions -->
+      <div class="post-actions">
+        <div class="action-left">
+          <button class="action-btn like-btn" (click)="toggleLike(post)">
+            <ion-icon [name]="post.liked ? 'heart' : 'heart-outline'" [class.liked]="post.liked"></ion-icon>
+            <span>{{post.likes}}</span>
+          </button>
+          <button class="action-btn">
+            <ion-icon name="chatbubble-outline"></ion-icon>
+            <span>{{post.comments || 0}}</span>
+          </button>
+        </div>
+        <button class="action-btn">
+          <ion-icon name="share-outline"></ion-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
+
   <ion-fab horizontal="end" vertical="bottom" slot="fixed" (click)="presentModal()">
-    <ion-fab-button color="light">
-      <ion-icon class="fab-icon-color" name="pencil-outline"></ion-icon>
+    <ion-fab-button class="fab-button">
+      <ion-icon name="add-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 </ion-content>
