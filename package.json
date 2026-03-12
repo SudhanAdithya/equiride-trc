@@ -2,7 +2,7 @@
   "name": "equiride-trc",
   "version": "2.0.0",
   "author": "Sudhan M",
-  "homepage": "https://github.com/manoj000/equiride-trc",
+  "homepage": "https://github.com/SudhanAdithya/equiride-trc",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

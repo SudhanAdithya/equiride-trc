@@ -102,7 +102,7 @@ Dark themed navigation with gold avatar ring, categorized sections (Explore / Ad
 
 ```bash
 # Clone the repository
-git clone https://github.com/manoj000/equiride-trc.git
+git clone https://github.com/SudhanAdithya/equiride-trc.git
 cd equiride-trc
 
 # Install dependencies
