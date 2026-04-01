@@ -153,8 +153,7 @@ src/
 
 ## 👨‍💻 Author
 
-**Sudhan M**  
-UI/UX Designer & Full-Stack Developer
+**Sudhan Adithya**  
 
 ---
 
